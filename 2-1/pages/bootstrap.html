@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bootstrap</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <style>
+            .block-a {
+                background-color: #4657AB;
+                border: 1px solid #354280;
+                margin: 5px;
+                padding: 5px;
+                height: 50px;
+            }
+
+            .block-b {
+                margin-left: 5px;
+                background-color: #4657AB;
+                border: 1px solid #354280;
+                padding: 5px;
+                height: 50px;
+                height: 100%;
+                min-height: 100%;
+            }
+
+            .block-c {
+                background-color: #C3CA59;
+                border: 1px solid #898E3E;
+                padding: 5px;
+                height: 50px;
+                margin: 5px;
+                height: 100%;
+                min-height: 100%;
+            }
+
+            @media (min-width: 1024px) {
+                .block-d1 {
+                    background-color: #E85A3A;
+                    border: 1px solid #CC4C30;
+                    padding: 5px;
+                    height: 50px;
+                    margin: 5px;
+                    height: 100%;
+                    min-height: 100%;
+                    margin-right: 5px;
+                }
+                .block-d2 {
+                    background-color: #E85A3A;
+                    border: 1px solid #CC4C30;
+                    padding: 5px;
+                    height: 50px;
+                    margin: 5px 0 5px 5px;
+                    height: 100%;
+                    min-height: 100%;
+                    margin-left: 5px;
+                }
+            }
+
+            @media (min-width: 601px) and (max-width: 1023px) {
+                .block-b1 {
+                    padding-left: 0px;
+                    padding-right: 20px;
+                    margin-bottom: 5px;
+                }
+                .block-a1 {
+                    padding-left: 0px;
+                }
+                .block-d1 {
+                    background-color: #E85A3A;
+                    border: 1px solid #CC4C30;
+                    padding: 5px;
+                    height: 50px;
+                    margin: 5px;
+                    height: 100%;
+                    min-height: 100%;
+                    margin-right: 20px;
+                }
+                .block-d2 {
+                    background-color: #E85A3A;
+                    border: 1px solid #CC4C30;
+                    padding: 5px;
+                    height: 50px;
+                    margin: 5px 0 5px 5px;
+                    height: 100%;
+                    min-height: 100%;
+                    margin-left: 20px;
+                }
+            }
+
+            @media (min-width: 200px) and (max-width: 600px) {
+                .block-d1 {
+                    background-color: #E85A3A;
+                    border: 1px solid #CC4C30;
+                    padding: 5px;
+                    height: 50px;
+                    margin: 5px;
+                    height: 100%;
+                    min-height: 100%;
+                    margin-right: 20px;
+                }
+                .block-d2 {
+                    background-color: #E85A3A;
+                    border: 1px solid #CC4C30;
+                    padding: 5px;
+                    height: 50px;
+                    margin: 5px 0 5px 5px;
+                    height: 100%;
+                    min-height: 100%;
+                    margin-left: 20px;
+                }
+            }
+
+            p {
+                font-weight: 600;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 block-a1">
+                    <div class="block-a" style="height: 75px;">
+                        <p>Block A</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-4-change-b1 col-sm-12  block-b1">
+                    <div class="block-b">
+                        <p>Block B1</p>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-8-change-b2 col-sm-12">
+                    <div class="block-b">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block-c"><p>Block C</p></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-md-6-change-d1 col-sm-12">
+                            <div class="block-d1"><p>Block D1</p></div>
+                        </div>
+                        <div class="col-md-6 col-md-6-change-d2 col-sm-12">
+                            <div class="block-d2"><p>Block D2</p></div>
+                        </div>
+                    </div>
+
+                    <p>Block B2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

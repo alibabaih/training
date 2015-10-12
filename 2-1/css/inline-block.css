@@ -1,0 +1,41 @@
+.block-a {
+    background-color: #3F8FD4;
+    height: 75px;
+    color: white;
+    padding: 10px;
+    border: 1px solid #3478B3;
+    margin-bottom: 5px;
+}
+#main {
+    width: 100%;
+}
+#main > .block-b1 {
+    background-color: #3F8FD4;
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+#main > .block-b2 {
+    background-color: #3F8FD4;
+    display: inline-block;
+    width: 74.6%;
+}
+.block-c {
+    height: 20px;
+    background-color: brown;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: block;
+}
+.block-d1 {
+    display: inline-block;
+    background-color: yellow;
+    margin: 10px;
+    width: 47.3%;
+}
+.block-d2 {
+    display: inline-block;
+    background-color: yellow;
+    margin: 10px;
+    width: 47.3%;
+}

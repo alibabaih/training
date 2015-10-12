@@ -1,0 +1,33 @@
+.block-a {
+    background-color: yellow;
+    height: 75px;
+    margin: 5px;
+}
+
+.block-b1 {
+    float: left;
+    background-color: yellow;
+    margin: 5px;
+    width: 33%
+}
+.block-b2 {
+    float: right;
+    background-color: yellow;
+    margin: 5px;
+    width: 64%;
+}
+.block-d1 {
+    float: left;
+    background-color: yellow;
+    margin: 5px;
+    width: 48%;
+}
+.block-d2 {
+    float: right;
+    background-color: yellow;
+    margin: 5px;
+    width: 48%;
+}
+.clear {
+    clear: both;
+}

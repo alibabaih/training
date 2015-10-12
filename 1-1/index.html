@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WEB Training Practice</title>
+  <link rel="stylesheet" href="test-lib/mocha.css" />
+  <script src="lib/jquery-1.11.1.js"></script>
+  <script src="test-lib/chai.js"></script>
+  <script src="test-lib/mocha.js"></script>
+  <script> mocha.setup('bdd');</script>
+  <script src="exercises.js"></script>
+  <script src="tests/exercises.spec.js"></script>
+  <script>
+    window.onload = function() {
+         mocha.run()
+    };
+  </script>
+ </head>
+<body>
+  <div id="mocha"></div>
+</body>
+</html>

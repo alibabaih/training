@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>width demo</title>
+  <style>
+div { width: 70px; height: 50px; float:left; margin: 5px;
+        background: red; cursor: pointer; }
+.mod { background: blue; cursor: default; }
+.box {width: 50px; height: 50px;}
+#big-box {width: 50px; height: 50px;}
+.new {background-color: cobalt;}
+  	</style>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+
+  <div>d</div>
+  <div>d</div>
+  <div>d</div>
+  <div>d</div>
+  <div>d</div><br /><br /><br /><br /><br /><br /><br /><br />
+  <div style="clear: both; display: block;"></div>
+<hr />
+
+  <div class="box red"></div>
+  <br /><br /><br />
+<hr />
+
+<button>Toggle 'em</button>
+<p>Hiya</p>
+<p>Such interesting text, eh?</p>
+<hr />
+<p>This is some plain text without any classes</p>
+<p id="about" class="opened">This paragraph has an id</p>
+<hr/>
+<h2>Greetings</h2>
+<div class="container">
+  <div class="inner">Hello</div>
+  <div class="inner">Goodbye</div>
+</div>
+
+<hr/>
+------------------------------------------------------------------
+<span class="container2">
+  <span class="inner2">Hello</span>
+  <span class="inner2">Goodbye</span>
+</span>
+<script>
+(function() {
+  var modWidth = 50;
+  var modHeight = 100;
+  $("div").one('click', function () {
+    $(this).width(modWidth).height(modHeight).addClass("mod");
+  modWidth -= 8;
+  });
+  $(".box").on('click', function() {
+        $(this).removeClass('red');
+  });
+  $( "button" ).click(function() {
+      $( "p" ).toggle( "slow" );
+  });
+  if ($("#about").hasClass("opened")) {
+    $("#about").css('color', 'red');
+  }
+  $( ".inner" ).wrap( "<div class='new'></div>" );
+  $( ".inner2" ).prepend( "<span>Test</span>" );
+})();
+
+
+</script>
+
+</body>
+</html>

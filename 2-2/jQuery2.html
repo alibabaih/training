@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>width demo</title>
+<script src="jquery-1.11.2.js"></script>
+</head>
+<body>
+
+<script>
+(function(global) {
+
+    var Greetr = function(firstName, lastName, language) {
+        return new Greetr.init(firstName, lastName, language);
+    }
+
+    var supportedLangs = ['en', 'ru'];
+
+    var greetings = {
+        en: 'Hello',
+        ru: 'Привет'
+    };
+
+    var formalGreetings = {
+        en: 'Greetings',
+        ru: 'Приветствие'
+    };
+
+    var logMessages = {
+        en: 'Logged in',
+        ru: 'Зарегестрировано'
+    };
+
+    Greetr.prototype = {
+
+        fullName: function() {
+            return this.firstName + ' ' + this.lastName;
+        },
+
+        validate: function() {
+             if (supportedLangs.indexOf(this.language)  === -1) {
+                throw "Invalid language";
+             }
+        },
+
+        greeting: function() {
+            return greetings[this.language] + ' ' + this.firstName + '!';
+        },
+
+        formalGreeting: function() {
+            return formalGreetings[this.language] + ', ' + this.fullName();
+        },
+
+        greet: function(formal) {
+            var msg;
+
+            // if undefined or null it will be coerced to 'false'
+            if (formal) {
+                msg = this.formalGreeting();
+            }
+            else {
+                msg = this.greeting();
+            }
+
+            if (console) {
+                console.log(msg);
+            }
+
+            // 'this' refers to the calling object at execution time
+            // makes the method chainable
+            return this;
+        },
+
+        log: function() {
+            if (console) {
+                console.log(logMessages[this.language] + ': ' + this.fullName());
+            }
+
+            return this;
+        },
+
+        setLang: function(lang) {
+            this.language = lang;
+
+            this.validate();
+
+            return this;
+        }
+
+
+
+    };
+
+    Greetr.init = function(firstName, lastName, language) {
+
+        var self = this;
+        self.firstName = firstName || '';
+        self.lastName = lastName || '';
+        self.language = language || 'en';
+
+    }
+
+    Greetr.init.prototype = Greetr.prototype;
+
+    global.Greetr = global.G$ = Greetr;
+
+}(window));
+</script>
+
+<script>
+var g = G$('John', 'Doe');
+g.greet().greet(true);
+console.log(g);
+</script>
+</body>
+</html>
