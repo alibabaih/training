@@ -3,7 +3,6 @@ body {
 }
 
 nav {
-    width: 100px;
     height: 100%;
     min-height: 100%;
     float: left;
@@ -11,20 +10,81 @@ nav {
 
 ul > li {
     display: block;
-    width: 150px;
-    height: 150px;
+    width: 148px;
+    height: 148px;
     margin: 20px;
-    background-color: bisque;
+    background-color: #35C7D6;
+    border: 1px solid #2AA6B3;
 }
 
 ul > li a {
     display: block;
     text-align: center;
     padding-top: 65px;
-    color: dimgrey;
+    font-weight: 600;
+    color: white;
     text-decoration: initial;
     cursor: pointer;
 }
+
+.content {
+    width: 812px;
+    height: 658px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    float: right;
+    background-color: #FBAE22;
+    border: 1px solid #D6941B;
+    display: block;
+    position: relative;
+}
+.sliderinner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.sliderinner>ul {
+    list-style: none;
+    height: 100%;
+    width: 400%;
+    overflow: hidden;
+    position: relative;
+    left: 0px;
+    -webkit-transition: left .8s cubic-bezier(0.77, 0, 0.175, 1);
+    -moz-transition: left .8s cubic-bezier(0.77, 0, 0.175, 1);
+    -o-transition: left .8s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: left .8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sliderinner>ul>li {
+    width: 25%;
+    height: 658px;
+    float: left;
+    position: relative;
+}
+
+.sliderinner>ul>li>iframe {
+    margin: auto;
+    height: 100%;
+}
+
+.slider input[type=radio] {
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    z-index: 100;
+    visibility: hidden;
+}
+
+li#control1 a:active~.li-2 .li-3 .li-4 {display: none;}
+nav ul li a #control2:active~:active~.sliderinner>ul { left: -100% }
+nav ul li a #control3:active~:active~.sliderinner>ul { left: -200% }
+nav ul li a #control4:active~:active~.sliderinner>ul { left: -300% }
+
+
+
+
 
 
 

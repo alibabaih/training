@@ -7,25 +7,27 @@
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/css.css">
 
-<style>
-    nav {
-
-    }
-</style>
-
     </head>
 
-    <body>
+    <body style="width: 1024px; margin: 0 auto;">
         <nav>
             <ul>
-                <li><a href="pages/inline-block.html">Inline Block</a></li>
-                <li><a href="pages/flex.html">Flex</a></li>
-                <li><a href="pages/bootstrap.html">Bootstrap</a></li>
-                <li><a href="pages/float.html">Float</a></li>
+                <li id="control1"><a  href="#">Inline Block</a></li>
+                <li><a id="control2" href="#">Flex</a></li>
+                <li><a id="control3" href="#">Bootstrap</a></li>
+                <li><a id="control4" href="#">Float</a></li>
             </ul>
         </nav>
 
-        <div class="content">
-
+        <div class="content">  
+            
+            <div class="slider-inner">
+                <ul class="content-ul">
+                    <li class="content-li li-1"><iframe src="pages/inline-block.html" width="640" height="320" align="left"></iframe></li>
+                    <li class=" li-2"><iframe src="pages/flex.html" width="812" height="658" align="left"></iframe></li>
+                    <li class=" li-3"><iframe src="pages/bootstrap.html" width="812" height="658" align="left"></iframe></li>
+                    <li class=" li-4"><iframe src="pages/float.html" width="812" height="658" align="left"></iframe></li>
+                </ul>
+            </div>
         </div>
 </html>

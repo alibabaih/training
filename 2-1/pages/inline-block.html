@@ -2,16 +2,16 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Boxes</title>
+        <title>Inline Block</title>
         <link rel="stylesheet" href="../css/inline-block.css">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../css/reset.css">
     </head>
     <body>
-        <div class="block-a">
-            <p>Block A</p>
-        </div>
-        <div id="main">
-            <div class="block-b1"><p>Block B1</p><br/><br/><br/><br/><br/></div>
+        <div class="block-a"><div class="inner-block-a"><p>Block A</p></div></div>
+            <div class="inside-block-b1"><div class="block-b1">
+                <p>Block B1</p>
+            </div>
             <div class="block-b2">
                 <div class="inner">
                     <div class="block-c"><p>Block C</p></div>
@@ -20,6 +20,5 @@
                     <p>Block B2</p>
                 </div>
             </div>
-        </div>
     </body>
 </html>

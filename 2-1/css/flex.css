@@ -1,38 +1,194 @@
-.block-a {
-    background-color: #3F8FD4;
+@media (max-width: 599px) {
+    .block-a {
+        background-color: #35C7D6;
+    border: 1px solid #2AA6B3;
     height: 75px;
-    color: white;
-    padding: 5px;
-    border: 1px solid #3478B3;
-    margin-bottom: 5px;
-    background-color: gray;
+    margin: 5px;
 }
-
 #main {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
 #main > block-b1 {
-    background-color: cadetblue;
-    flex-direction: row;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 30%;
-    margin: auto;
-    width: 100px;
-   /*flex: 1 1 30%;*/
+    background-color: #35C7D6;
+    border: 1px solid #2AA6B3;
    order: 1;
+    flex-grow: 1;
+    flex-basis: auto;
 }
 
 #main > block-b2 {
-   /*flex: 1 1 70%;*/
-   flex-direction: row;
-   flex-grow: 3;
-   flex-shrink: 1;
-   flex-basis: 70%;
+    background-color: #35C7D6;
+    border: 1px solid #2AA6B3;
    order: 2;
-   width: 100px;
-   margin: auto;
+    flex-grow: 3;
+    flex-basis: auto;
+}
+
+        .block-d1 {
+    display: inline-block;
+    background-color: yellow;
+    margin: 5px;
+    width: 48%;
+        background-color: #E85A3A;
+    border: 1px solid #CC4C30;
+}
+.b
+    
+        .block-d1 {
+    background-color: yellow;
+    margin: 5px;
+        background-color: #E85A3A;
+    border: 1px solid #CC4C30;
+}
+.block-d2 {
+    background-color: yellow;
+    margin: 5px;
+    background-color: #E85A3A;
+    border: 1px solid #CC4C30;
+}
+    .block-c {
+    background-color: #FBAE22;
+    border: 1px solid #D6941B;
+    padding: 5px;
+    height: 50px;
+    margin: 5px;
+    height: 100%;
+    min-height: 100%;
+}
+    
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+    .block-a {
+        background-color: #35C7D6;
+    border: 1px solid #2AA6B3;
+    height: 75px;
+    margin: 5px;
+}
+    
+#main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+#main > block-b1 {
+    background-color: #35C7D6;
+    border: 1px solid #2AA6B3;
+   order: 1;
+    flex-grow: 1;
+    flex-basis: auto;
+}
+
+#main > block-b2 {
+    background-color: #35C7D6;
+    border: 1px solid #2AA6B3;
+   order: 2;
+    flex-grow: 3;
+    flex-basis: auto;
+}
+
+        .block-d1 {
+    display: inline-block;
+    background-color: yellow;
+    margin: 5px;
+    width: 48%;
+        background-color: #E85A3A;
+    border: 1px solid #CC4C30;
+}
+.b
+    .block-d1 {
+    display: inline-block;
+    background-color: yellow;
+    margin: 5px;
+    width: 48%;
+        background-color: #E85A3A;
+    border: 1px solid #CC4C30;
+}
+.block-d2 {
+    display: inline-block;
+    background-color: yellow;
+    margin: 5px;
+    width: 48%;
+    background-color: #E85A3A;
+    border: 1px solid #CC4C30;
+}
+    .block-c {
+    background-color: #FBAE22;
+    border: 1px solid #D6941B;
+    padding: 5px;
+    height: 50px;
+    margin: 5px;
+    height: 100%;
+    min-height: 100%;
+}
+}
+
+@media (min-width: 1024px) and (max-width: 9999px) {
+    .block-a {
+        background-color: #35C7D6;
+    border: 1px solid #2AA6B3;
+    height: 75px;
+    margin: 5px;
+}
+    
+#main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+#main > block-b1 {
+    background-color: #35C7D6;
+    border: 1px solid #2AA6B3;
+   order: 1;
+    flex-grow: 1;
+    flex-basis: auto;
+}
+
+#main > block-b2 {
+    background-color: #35C7D6;
+    border: 1px solid #2AA6B3;
+   order: 2;
+    flex-grow: 3;
+    flex-basis: auto;
+}
+
+        .block-d1 {
+    display: inline-block;
+    background-color: yellow;
+    margin: 5px;
+    width: 48%;
+        background-color: #E85A3A;
+    border: 1px solid #CC4C30;
+}
+.block-d2 {
+    display: inline-block;
+    background-color: yellow;
+    margin: 5px;
+    width: 48%;
+    background-color: #E85A3A;
+    border: 1px solid #CC4C30;
+}
+    .block-c {
+    background-color: #FBAE22;
+    border: 1px solid #D6941B;
+    padding: 5px;
+    height: 50px;
+    margin: 5px;
+    height: 100%;
+    min-height: 100%;
+}
 }
