@@ -2,9 +2,9 @@
 
 <p>1-1: tasks</p>
 <ul>
-    <li>daysUntilNewYear: Return number of days to New Year</li>
-    <li><small>Done</small>reverse: Reverse the string</li>
-    <li><small>Done</small>containsNumber: Check if object has a given property which contains number</li>
+    <li><small style="color:red;">Done</small> daysUntilNewYear: Return number of days to New Year</li>
+    <li><small style="color:red;">Done</small> reverse: Reverse the string</li>
+    <li><small style="color:red;">Done</small> containsNumber: Check if object has a given property which contains number</li>
     <li>serialize: Serialize the object into string in .properties format</li>
 </ul>
 <p>1-3: tasks</p>
@@ -13,10 +13,10 @@
 </ul>
 <p>2-1: tasks</p>
 <ul>
-    <li><small>Done</small>Create a HTML markup using CSS float property</li>
-    <li><small>Done</small>Create a HTML markup using CSS display:inline-block property</li>
-    <li><small>Done</small>Create a HTML markup using Twitter Bootstrap 3 grid classes</li>
-    <li><small>Done</small>Create a HTML markup using CSS Flexbox</li>
+    <li><small style="color:red;">Done</small> Create a HTML markup using CSS float property</li>
+    <li><small style="color:red;">Done</small> Create a HTML markup using CSS display:inline-block property</li>
+    <li><small style="color:red;">Done</small> Create a HTML markup using Twitter Bootstrap 3 grid classes</li>
+    <li><small style="color:red;">Done</small> Create a HTML markup using CSS Flexbox</li>
     <li>For the screen width greater than 1024px the layout should look like on the picture</li>
     <li>For the screen width from 600 to 1024 px the block B1 should be placed below block B2</li>
     <li>For the screen width less than 600px the block D2 should be placed below block D1, and block B1 should be below block B2.</li>
@@ -31,10 +31,10 @@
 </ul>
 <p>2-2: tasks</p>
 <ul>
-    <li><small>Process</small>Implement the following JQuery functions:
+    <li><small style="color:yellow;">Proccess</small> Implement the following JQuery functions:
 $(selector), width(), height(), hasClass(), addClass(), ,toggleClass(), removeClass(), wrap(), append(), prepend()
 </li>
-    <li><small>Process</small>Implement the Font Dialog in browser using JQuery and Twitter Bootstrap 3</li>
+    <li><small style="color:yellow;">Proccess</small> Implement the Font Dialog in browser using JQuery and Twitter Bootstrap 3</li>
 </ul>
 <p>2-3: tasks</p>
 <ul>
