@@ -1,3 +1,4 @@
+'use strict';
 //width(), height(), hasClass(), addClass(), ,toggleClass(), removeClass(), wrap(), append(), prepend()
 
 var $$$ = window.$$$ = function(arg) {
