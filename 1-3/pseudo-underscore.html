@@ -1,0 +1,83 @@
+<!--
+    call -binding in chain constructor of the object
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Pseudo Underscore</title>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+//    Implement the following Underscore.js functions:
+//    bind, bindAll, partial, memoize,
+//    delay, defer, throttle, debounce,
+//    once, after, before, wrap, negate, compose.
+
+
+var users = {
+    data: [
+        {name: 'John Smith'},
+        {name: 'Ellen Simons'}
+    ],
+
+    showFirst: function (event) {
+        console.log(this.data[0].name);
+    }
+}
+
+//own bind
+function bindOwn(func, obj, val) {
+    var argumentsList = list(1,2,3);
+    var attachArguments = argumentsList.bind();
+    var getFunction = func;
+    this.obj = obj;
+    this.val = val;
+    obj.val = "";
+
+    getFunction.bind();
+
+}
+
+console.log('----------------');
+
+var zZZz = function(obj) {
+    if (obj instanceof zZZz) {
+        return obj;
+    }
+    if (!(this instanceof zZZz)) {
+        return new zZZz(obj);
+    }
+};
+
+// Create a function bound to a given object (assigning `this`, and arguments,
+// optionally). Delegates to **ECMAScript 5**'s native `Function.bind` if
+// available.
+zZZz.bind = function(func, context) {
+    if (!zZZz.isFunction(func)) {
+        throw new TypeError('Bind must be called on a function');
+    } else {
+        var arg = this.slice.call(arguments, 1);
+        var bindObject = this.apply(func, arg);
+        return bindObject;
+    }
+    var args = slice.call(arguments, 2);
+    var bound = function() {
+        return executeBound(func, bound, context, this, args.concat(slice.call(arguments)));
+    };
+    return bound;
+};
+
+//underscore
+var func = function(greeting){ return greeting + ': ' + this.name };
+func = _.bind(func, {name: 'moe'}, 'hi');
+var b = func();
+console.log(b);
+
+
+//$('button').click(users.showFirst); // this.data is undefined
+</script>
+</head>
+<body>
+ <button onclick="users.showFirst()">Click</button> |
+ <button onclick="showFirst()">Click</button>
+</body>
+</html>
