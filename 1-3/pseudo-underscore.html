@@ -52,19 +52,27 @@ var zZZz = function(obj) {
 // optionally). Delegates to **ECMAScript 5**'s native `Function.bind` if
 // available.
 zZZz.bind = function(func, context) {
-    if (!zZZz.isFunction(func)) {
-        throw new TypeError('Bind must be called on a function');
-    } else {
-        var arg = this.slice.call(arguments, 1);
-        var bindObject = this.apply(func, arg);
-        return bindObject;
-    }
+    console.log(arguments);
+
+    var obj = this.call(arguments, 1); //get object from the context
+    console.log(obj);
+    var arg = this.call(arguments, 2); //get argument from the context
+    console.log(arg);
+
+    var bindObject = this.apply(func, arg);
+
     var args = slice.call(arguments, 2);
     var bound = function() {
         return executeBound(func, bound, context, this, args.concat(slice.call(arguments)));
     };
     return bound;
 };
+//zZZz
+var zZZzFunc = function(greetingZ){ return greetingZ + ': ' + this.name };
+func = zZZz.bind(zZZzFunc, {name: 'moe'}, 'hi');
+var c = func();
+console.log(c);
+
 
 //underscore
 var func = function(greeting){ return greeting + ': ' + this.name };
@@ -72,7 +80,7 @@ func = _.bind(func, {name: 'moe'}, 'hi');
 var b = func();
 console.log(b);
 
-
+console.log('----------------');
 //$('button').click(users.showFirst); // this.data is undefined
 </script>
 </head>

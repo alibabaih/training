@@ -1,16 +1,19 @@
 'use strict';
 //width(), height(), hasClass(), addClass(), ,toggleClass(), removeClass(), wrap(), append(), prepend()
 
+var Select = function(arg2) {
+    Array.call(this);
+    console.log(Array.call(this));
+
+    for(var i = 0; i < arg2.length; i++) {
+        this.push(arg2[i]);
+    }
+};
+
 var $$$ = window.$$$ = function(arg) {
     var arg2 = document.querySelectorAll(arg);
     return new Select(arg2);
-};
-
-var Select = function(arg2) {
-    Array.call(this);
-    for(var i - 0; i < arg2.length; i++) {
-        this.push(arg2[i]);
-    }
+    console.log(Select(arg2));
 };
 
 Select.prototype = Object.create(Array.prototype);
@@ -48,11 +51,11 @@ Select.prototype.hasClass = function(className) {
     }
 }
 
-Select.prototype.addClass = function(el, class){
-    el.className += ' '+class;
+Select.prototype.addClass = function(el, addClass){
+    el.className += ' '+ addClass;
 }
 
-Select.prototype.toggleClass = function element, className){
+Select.prototype.toggleClass = function (element, className){
     if (!element || !className){
         return;
     }
@@ -67,10 +70,10 @@ Select.prototype.toggleClass = function element, className){
     element.className = classString;
 }
 
-Select.prototype.removeClass = function(el, class){
+Select.prototype.removeClass = function(el, delClass){
     var elClass = ' '+el.className+' ';
-    while(elClass.indexOf(' '+class+' ') != -1)
-         elClass = elClass.replace(' '+class+' ', '');
+    while(elClass.indexOf(' '+delClass+' ') != -1)
+         elClass = elClass.replace(' '+delClass+' ', '');
     el.className = elClass;
 }
 
@@ -120,6 +123,6 @@ Select.prototype.prepend = function(el, str) {
 }
 
 
-document.getElementById('test-btn').addEventListener('click', function() {
-    toggleClass(document.getElementById('test'), 'test-class');
-});//toggle
+//document.getElementById('test-btn').addEventListener('click', function() {
+//    toggleClass(document.getElementById('test'), 'test-class');
+//});//toggle
