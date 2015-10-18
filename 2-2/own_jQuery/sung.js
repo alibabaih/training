@@ -13,69 +13,134 @@
  * prepend()
  */
 
-(function (window, undefined) {
+var Select = function(select) {
+    Array.call(this);
+    //console.log(Array.call(this));
 
-    // Handle DOMContentLoaded event
-    var domReadyStack = [];
-
-    function handleDOMReady(fn) {
-        return document.readyState === 'complete' ? fn.call(document) : domReadyStack.push(fn);
+    for(var i = 0; i < select.length; i++) {
+        this.push(select[i]);
     }
+    //console.log(this);
+};
 
-    document.addEventListener('DOMContentLoaded', function onDOMReady() {
-        document.removeEventListener('DOMContentLoaded', onDOMReady);
-        while (domReadyStack.length) {
-            domReadyStack.shift().call(document);
+var sung = window.sung = function(arg) {
+    var selector = document.querySelectorAll(arg);
+    console.log(selector);
+    return new Select(selector);
+
+};
+
+
+Select.prototype = Object.create(Array.prototype); //new object with specified prototype object and properties
+
+Select.prototype.width = function(width) {
+    if(width) {
+        for(var i = 0; i < this.length; i++) {
+            this[i].style.width = width + 'px';
         }
-    });
-
-    // ion constructor
-    function ion(selector) {
-
-        if (!(this instanceof ion)) {
-            return new ion(selector);
-        }
-
-        if (typeof selector === 'function') {
-            return handleDOMReady(selector);
-        }
-
-        // Number of elements in collection
-        this.length = 0;
-
-        // Nodes collection array
-        this.nodes = [];
-
-        // HTMLElements and NodeLists are wrapped in nodes array
-        if (selector instanceof HTMLElement || selector instanceof NodeList) {
-            this.nodes = selector.length > 1 ? [].slice.call(selector) : [selector];
-        } else if (typeof selector === 'string') {
-            if (selector[0] === '<' && selector[selector.length - 1] === ">") {
-                // Create DOM elements
-                this.nodes = [createNode(selector)];
-            } else {
-                // Query DOM
-                this.nodes = [].slice.call(document.querySelectorAll(selector));
-            }
-        }
-
-        if (this.nodes.length) {
-            this.length = this.nodes.length;
-            for (var i = 0; i < this.nodes.length; i++) {
-                this[i] = this.nodes[i];
-            }
-        }
+        return this;
     }
-
-    function createNode(html) {
-        var div = document.createElement('div');
-        div.innerHTML = html;
-        return div.firstChild;
+    else {
+        return this[0].style.width;
     }
+};
 
-    window.ion = ion;
+Select.prototype.height = function(height) {
+    if(height) {
+        for(var i = 0; i < this.length; i++) {
+            this[i].style.height = height + 'px'
+        }
+        return this;
+    }
+    else {
+        return this[0].style.height;
+    }
+};
 
-})(window);
+Select.prototype.hasClass = function(className) {
+    for(var i = 0; i < this.length; i++) {
+        if(this[i].classList.contains(className)) {
+            console.log('This element contains class which you are looking for.');
+            return true;
+        }
+        else {
+            return false;
+        }
 
+    }
+}
 
+Select.prototype.addClass = function(addClass){
+    if(addClass) {
+        for(var i = 0; i < this.length; i++) {
+            this[i].className =  this[i].className + ' ' + addClass;
+        }
+        return this;
+    }
+    else {
+        return this[0].className;
+    }
+}
 
+Select.prototype.removeClass = function(delClass){
+    if(delClass) {
+        for(var i = 0; i < this.length; i++) {
+            this[i].classList.remove(delClass);
+        }
+        return this;
+    }
+    else {
+        return this[0].className;
+    }
+}
+
+Select.prototype.toggleClass = function (toggle){
+    if(toggle) {
+        for(var i = 0; i < this.length; i++) {
+            this[i].classList =  this[i].classList.toggle(toggle);
+        }
+        return this;
+    }
+    else {
+        return this[0].className;
+    }
+}
+
+Select.prototype.wrap = function(wrap) {
+    if(wrap) {
+        var tags = wrap.match(/<.+?>/g);
+        console.log(tags);
+
+        for(var i = 0; i < this.length; i++) {
+            this[i].outerHTML = tags[0] + this[i].outerHTML + tags[1];
+        }
+        return this;
+    }
+    else {
+        return this[0].outerHTML;
+    }
+}
+
+Select.prototype.append = function(append) {
+    if(append) {
+        for(var i = 0; i < this.length; i++) {
+            this[i].innerHTML = this[i].innerHTML + append;
+        }
+        return this;
+    }
+    else {
+        return this[0].innerHTML;
+    }
+}
+
+Select.prototype.prepend = function(prepend) {
+    if(prepend) {
+        for(var i = 0; i < this.length; i++) {
+            this[i].innerHTML = prepend + this[i].innerHTML;
+        }
+        return this;
+    }
+    else {
+        return this[0].innerHTML;
+    }
+}

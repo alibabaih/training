@@ -1,14 +1,8 @@
-// DOM is not yet ready => $p.length is zero
-var $p = ion('p');
-console.log('DOM not ready: p elements count %d, %o', $p.length, $p);
-
-
-// DOM ready event
-ion(function() {
-
-    var $p = ion('p');
-    console.log('DOM ready: p elements count %d, %o', $p.length, $p);
-
-    var $newDiv = ion('<div>New div</div>');
-    document.body.appendChild($newDiv[0]);
-});
+sung('.change-width').width(200);
+sung('.change-height').height(70);
+sung('.find-class').hasClass('cool-class');
+sung('.add-class').addClass('added-class');
+sung('.nice-class').removeClass('scram');
+sung('.add-material').append(' <strong>Appended</strong>').prepend('<strong>Prepended</strong> ');
+sung('.add-material').wrap('<div class="wrapped"></div>');
+sung('.toggle').toggleClass('toggleable');

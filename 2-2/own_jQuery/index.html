@@ -4,8 +4,11 @@
     <title>Narrow Jumbotron Template for Bootstrap</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    <script src="sung.js"></script>
-    <script src="script.js"></script>
+    <style>
+        h4 {background-color: #EEEEEE;}
+        .wrapped {box-shadow: 0px 2px 21px 1px rgba(222,222,222,1);}
+    </style>
+
 
 </head>
 <body>
@@ -32,21 +35,30 @@
             <h4>Subheading</h4>
             <div class="colored">This is colored text. Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</div>
 
-            <h4>Subheading</h4>
+            <h4 class="change-width">Subheading <strong>width: 200</strong></h4>
             <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
-            <h4>Subheading</h4>
+            <h4 class="change-height">Subheading <strong>height: 200</strong></h4>
             <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
 
         <div class="col-lg-6">
-            <h4>Subheading</h4>
+            <h4 class="find-class cool-class">Subheading <strong>looking for "cool-class" (console.log)</strong></h4>
             <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-            <h4>Subheading</h4>
+            <h4 class="add-class">Subheading <strong>added-class</strong></h4>
             <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
-            <h4>Subheading</h4>
+            <h4 class="nice-class scram">Subheading <strong>delete "scram" class</strong></h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4 class="add-material">Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+
+            <h4 class="wrap">Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+
+            <h4 class="toggle">Subheading</h4>
             <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
     </div>
@@ -56,5 +68,7 @@
     </footer>
 
 </div> <!-- /container -->
+<script src="sung.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
