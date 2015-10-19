@@ -92,7 +92,7 @@ var Select = function(select) {
         }
     }
 
-    /*
+
     this.toggleClass = function (toggle){
         if(toggle) {
             for(var i = 0; i < this.length; i++) {
@@ -104,7 +104,7 @@ var Select = function(select) {
             return this[0].className;
         }
     }
-    */
+
 
     this.wrap = function(wrap) {
         if(wrap) {
@@ -133,17 +133,7 @@ var Select = function(select) {
         }
     }
 
-    this.prepend = function(prepend) {
-        if(prepend) {
-            for(var i = 0; i < this.length; i++) {
-                this[i].innerHTML = prepend + this[i].innerHTML;
-            }
-            return this;
-        }
-        else {
-            return this[0].innerHTML;
-        }
-    }
+
 
 };
 
@@ -157,3 +147,14 @@ var sung = window.sung = function(arg) {
 
 Select.prototype = Object.create(Array.prototype); //new object with specified prototype object and properties
 
+Select.prototype.prepend = function(prepend) {
+    if(prepend) {
+        for(var i = 0; i < this.length; i++) {
+            this[i].innerHTML = prepend + this[i].innerHTML;
+        }
+        return this;
+    }
+    else {
+        return this[0].innerHTML;
+    }
+}
