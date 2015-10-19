@@ -1,4 +1,8 @@
 'use strict';
+//gulp, методы на классе,  babel, connect, serv static
+//gulp watch
+//tests gulp
+//yo generator
 
 /**
  * Implement jQuery functional
