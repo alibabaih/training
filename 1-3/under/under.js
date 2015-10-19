@@ -12,9 +12,55 @@
 
 (function() {
 
+    //declare an object
     var under = function(obj) {
         return obj;
     };
+
+    //function compose
+    under.compose = function() {
+        console.log('*compose*');
+
+        //collect arguments
+        var args = arguments;
+        console.log(args);
+
+
+        var start = args.length - 1;
+
+        return function() {
+            var i = start;
+
+            //привязываем контекст, передаём массив контексту
+            var result = args[start].apply(this, arguments);
+            console.log(result);
+
+            //до тех пор, пока список аргументов не закончится, делаем ??????
+            while (i--) {
+                //зачем снова привязывать контекст?
+                result = args[i].call(this, result);
+            }
+            console.log(result);
+            return result;
+        };
+
+    };
+
+    var greet    = function(name){ return "hi: " + name; };
+    var exclaim  = function(statement){ return statement + "!"; };
+    var welcome = under.compose(greet, exclaim());
+    welcome('moe');
+
+
+
+
+
+
+
+
+
+
+
 
     under.bind = function(func, context) {
         console.log(Array.prototype.slice.call(arguments));
@@ -171,30 +217,7 @@
     var re = greetings();
     console.log(re);
 
-    //compose
-    under.compose = function() {
-        console.log('*compose*');
-        var args = arguments;
-        console.log(args);
-        var start = args.length - 1;
 
-        return function() {
-            var i = start;
-            var result = args[start].apply(this, arguments);
-            console.log(result);
-            while (i--) {
-                result = args[i].call(this, result);
-            }
-            console.log(result);
-            return result;
-        };
-
-    };
-
-    var greet    = function(name){ return "hi: " + name; };
-    var exclaim  = function(statement){ return statement + "!"; };
-    var welcome = under.compose(greet, exclaim());
-    console.log(welcome('moe'));
 
     //partial
     console.log('partial');
