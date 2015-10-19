@@ -16,8 +16,6 @@
         return obj;
     };
 
-    //this.under = under();
-
     under.bind = function(func, context) {
         console.log(Array.prototype.slice.call(arguments));
         //Метод bind() создаёт новую функцию, которая при вызове устанавливает в качестве контекста выполнения this предоставленное значение. В метод также передаётся набор аргументов, которые будут установлены перед переданными в привязанную функцию аргументами при её вызове.
@@ -47,20 +45,6 @@
         return self;
     };
 
-    under.partial = function(func) {
-        var boundArgs = Array.prototype.slice.call(arguments, 1);
-        console.log(Array.prototype.slice.call(arguments, 1));
-        var bound = function() {
-            var position = 0, length = boundArgs.length;
-            var args = Array(length);
-            for (var i = 0; i < length; i++) {
-                args[i] = boundArgs[i] === Array.prototype.slice ? arguments[position++] : boundArgs[i];
-            }
-            while (position < arguments.length) args.push(arguments[position++]);
-            return executeBound(func, bound, this, this, args);
-        };
-        return bound;
-    };
 
     under.memoize = function(func, hasher) {
         var memoize = function(key) {
@@ -80,7 +64,7 @@
         }, wait);
     };
 
-    under.defer = under.partial(under.delay, under, 1);
+    //under.defer = under.partial(under.delay, under, 1);
 
     under.throttle = function(func, wait, options) {
         var context, args, result;
@@ -165,7 +149,7 @@
         };
     };
 
-    under.once = under.partial(under.before, 2);
+    //under.once = under.partial(under.before, 2);
 
     under.wrap = function(func, wrapper) {
         return _.partial(wrapper, func);
@@ -177,18 +161,9 @@
         };
     };
 
-    under.compose = function() {
-        var args = arguments;
-        var start = args.length - 1;
-        return function() {
-            var i = start;
-            var result = args[start].apply(this, arguments);
-            while (i--) result = args[i].call(this, result);
-            return result;
-        };
-    };
 
-    //bind
+
+
     var greetings = function(greeting){
         return greeting + ' ' + this.name + ' ' + this.sername;
     };
@@ -196,11 +171,54 @@
     var re = greetings();
     console.log(re);
 
+    //compose
+    under.compose = function() {
+        console.log('*compose*');
+        var args = arguments;
+        console.log(args);
+        var start = args.length - 1;
+
+        return function() {
+            var i = start;
+            var result = args[start].apply(this, arguments);
+            console.log(result);
+            while (i--) {
+                result = args[i].call(this, result);
+            }
+            console.log(result);
+            return result;
+        };
+
+    };
+
+    var greet    = function(name){ return "hi: " + name; };
+    var exclaim  = function(statement){ return statement + "!"; };
+    var welcome = under.compose(greet, exclaim());
+    console.log(welcome('moe'));
+
     //partial
+    console.log('partial');
+    under.partial = function(func) {
+        var boundArgs = Array.prototype.slice.call(arguments, 1);
+        console.log(Array.prototype.slice.call(arguments, 1));
+        var bound = function() {
+            var position = 0, length = boundArgs.length;
+            var args = Array(length);
+            for (var i = 0; i < length; i++) {
+                args[i] = boundArgs[i] === Array.prototype.slice ? arguments[position++] : boundArgs[i];
+            }
+            while (position < arguments.length) args.push(arguments[position++]);
+            return executeBound(func, bound, this, this, args);
+        };
+        return bound;
+    };
+
     var add = function(a, b) { return a + b; };
     var add5 = under.partial(add, 5);
     console.log(add5(10));
 
 
 
-}).call(this);
+})();
+
+
