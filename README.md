@@ -9,7 +9,12 @@
 </ul>
 <p>1-3: tasks</p>
 <ul>
-    <li>Implement the following Underscore.js functions: bind, bindAll, partial, memoize, delay, defer, throttle, debounce, once, after, before, wrap, negate, compose.</li>
+    <li>
+        <strong style="color:red;">Done</strong> 
+        Implement the following Underscore.js functions: bind, bindAll, partial, memoize, 
+        delay, defer, throttle, debounce, once, after, before, wrap, negate, compose. 
+        Placed in the folder "under".
+    </li>
 </ul>
 <p>2-1: tasks</p>
 <ul>
@@ -31,9 +36,14 @@
 </ul>
 <p>2-2: tasks</p>
 <ul>
-    <li><strong style="color:red;">Done</strong> Implement the following JQuery functions:
-$(selector), width(), height(), hasClass(), addClass(), ,toggleClass(), removeClass(), wrap(), append(), prepend()
-</li>
+    <li>
+        <strong style="color:red;">Done</strong> Implement the following JQuery functions:
+        $(selector), width(), height(), hasClass(), addClass(), ,toggleClass(), removeClass(), wrap(), 
+    append(), prepend(). Placed in the folder "own_jQuery".
+    </li>
+    <li>
+        <strong style="color:yellow;">Proccess</strong> Rewrite jQuery functional on ES6, build project on Yeoman.
+    </li>
     <li><strong style="color:yellow;">Proccess</strong> Implement the Font Dialog in browser using JQuery and Twitter Bootstrap 3</li>
 </ul>
 <p>2-3: tasks</p>

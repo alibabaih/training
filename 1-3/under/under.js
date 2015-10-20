@@ -48,18 +48,8 @@
 
     var greet    = function(name){ return "hi: " + name; };
     var exclaim  = function(statement){ return statement + "!"; };
-    var welcome = under.compose(greet, exclaim());
+    var welcome = under.compose(greet, exclaim);
     welcome('moe');
-
-
-
-
-
-
-
-
-
-
 
 
     under.bind = function(func, context) {
@@ -73,23 +63,29 @@
 
     };
 
+    var func = function(greeting){ return greeting + ': ' + this.name };
+    func = under.bind(func, {name: 'moe'}, 'hi');
+    console.log(func());
+
     under.bindAll = function(obj) {
         var i, length = arguments.length, key;
         if (length <= 1) throw new Error('bindAll must be passed function names');
         for (i = 1; i < length; i++) {
             key = arguments[i];
-            obj[key] = _.bind(obj[key], obj);
+            obj[key] = under.bind(obj[key], obj);
         }
         return obj;
     };
 
-    var executeBound = function(sourceFunc, boundFunc, context, callingContext, args) {
-        if (!(callingContext instanceof boundFunc)) return sourceFunc.apply(context, args);
-        var self = baseCreate(sourceFunc.prototype);
-        var result = sourceFunc.apply(self, args);
-        if (_.isObject(result)) return result;
-        return self;
+    var buttonView = {
+        label  : 'underscore',
+        onClick: function(){ alert('clicked: ' + this.label); },
+        onHover: function(){ console.log('hovering: ' + this.label); }
     };
+    under.bindAll(buttonView, 'onClick', 'onHover');
+// When the button is clicked, this.label will have the correct value.
+    jQuery('#underscore_button').bind('click', buttonView.onClick);
+    console.log(buttonView.label);
 
 
     under.memoize = function(func, hasher) {
@@ -103,29 +99,40 @@
         return memoize;
     };
 
+    var fibonacci = under.memoize(function(n) {
+        return n < 2 ? n: fibonacci(n - 1) + fibonacci(n - 2);
+    });
+    console.log(fibonacci);
+
     under.delay = function(func, wait) {
-        var args = slice.call(arguments, 2);
+        var args = Array.prototype.slice.call(arguments, 2);
         return setTimeout(function(){
             return func.apply(null, args);
         }, wait);
     };
 
-    //under.defer = under.partial(under.delay, under, 1);
+    var log = under.bind(console.log, console);
+    under.delay(log, 1000, 'logged later');
+
 
     under.throttle = function(func, wait, options) {
         var context, args, result;
         var timeout = null;
         var previous = 0;
-        if (!options) options = {};
+        if (!options) {
+            options = {};
+        }
         var later = function() {
-            previous = options.leading === false ? 0 : _.now();
+            previous = options.leading === false ? 0 : Date.now();
             timeout = null;
             result = func.apply(context, args);
             if (!timeout) context = args = null;
         };
         return function() {
-            var now = _.now();
-            if (!previous && options.leading === false) previous = now;
+            var now = Date.now();
+            if (!previous && options.leading === false) {
+                previous = now;
+            }
             var remaining = wait - (now - previous);
             context = this;
             args = arguments;
@@ -136,19 +143,26 @@
                 }
                 previous = now;
                 result = func.apply(context, args);
-                if (!timeout) context = args = null;
+                if (!timeout) {
+                    context = args = null;
+                }
             } else if (!timeout && options.trailing !== false) {
                 timeout = setTimeout(later, remaining);
             }
             return result;
         };
     };
+    function updatePosition() {
+        console.log('update');
+    }
+    var throttled = under.throttle(updatePosition, 100);
+    $(window).scroll(throttled);
 
     under.debounce = function(func, wait, immediate) {
         var timeout, args, context, timestamp, result;
 
         var later = function() {
-            var last = _.now() - timestamp;
+            var last = Date.now() - timestamp;
 
             if (last < wait && last >= 0) {
                 timeout = setTimeout(later, wait - last);
@@ -164,9 +178,11 @@
         return function() {
             context = this;
             args = arguments;
-            timestamp = _.now();
+            timestamp = Date.now();
             var callNow = immediate && !timeout;
-            if (!timeout) timeout = setTimeout(later, wait);
+            if (!timeout) {
+                timeout = setTimeout(later, wait);
+            }
             if (callNow) {
                 result = func.apply(context, args);
                 context = args = null;
@@ -175,6 +191,12 @@
             return result;
         };
     };
+    function calculateLayout() {
+        console.log('recalculated');
+    }
+    var lazyLayout = under.debounce(calculateLayout, 300);
+    $(window).resize(lazyLayout);
+
 
     under.after = function(times, func) {
         return function() {
@@ -183,6 +205,14 @@
             }
         };
     };
+    /*
+    var notes = ['record1', 'record2','record3','record4','record5'];
+    var renderNotes = _.after(notes.length, render);
+    under.each(notes, function(note) {
+        note.asyncSave({success: renderNotes});
+    });
+    */
+// renderNotes is run once, after all notes have saved.
 
     under.before = function(times, func) {
         var memo;
@@ -194,32 +224,33 @@
             return memo;
         };
     };
-
-    //under.once = under.partial(under.before, 2);
-
-    under.wrap = function(func, wrapper) {
-        return _.partial(wrapper, func);
-    };
-
-    under.negate = function(predicate) {
-        return function() {
-            return !predicate.apply(this, arguments);
-        };
-    };
+    function askForRaise() {
+        console.log('function wake up');
+    }
+    var monthlyMeeting = under.before(3, askForRaise);
+    monthlyMeeting();
+    monthlyMeeting();
+    monthlyMeeting();
+// the result of any subsequent calls is the same as the second call
 
 
 
 
-    var greetings = function(greeting){
-        return greeting + ' ' + this.name + ' ' + this.sername;
-    };
-    greetings = under.bind(greetings, {name : 'Vasiliy', sername: 'Schitov'}, 'Hi');
-    var re = greetings();
-    console.log(re);
+
+
+
 
 
 
     //partial
+    var executeBound = function(sourceFunc, boundFunc, context, callingContext, args) {
+        if (!(callingContext instanceof boundFunc)) return sourceFunc.apply(context, args);
+        var self = baseCreate(sourceFunc.prototype);
+        var result = sourceFunc.apply(self, args);
+        if (_.isObject(result)) return result;
+        return self;
+    };
+
     console.log('partial');
     under.partial = function(func) {
         var boundArgs = Array.prototype.slice.call(arguments, 1);
@@ -241,6 +272,22 @@
     console.log(add5(10));
 
 
+    under.negate = function(predicate) {
+        return function() {
+            return !predicate.apply(this, arguments);
+        };
+    };
+    var isFalsy = under.negate(Boolean);
+
+    under.wrap = function(func, wrapper) {
+        return under.partial(wrapper, func);
+    };
+    var hello = function(name) { return "hello: " + name; };
+    hello = under.wrap(hello, function(func) {
+        return "before, " + func("moe") + ", after";
+    });
+    console.log(hello());
+    //=> 'before, hello: moe, after'
 
 })();
 
