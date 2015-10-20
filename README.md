@@ -44,7 +44,7 @@
     <li>
         <strong style="color:yellow;">Proccess</strong> Rewrite jQuery functional on ES6, build project on Yeoman.
     </li>
-    <li><strong style="color:yellow;">Proccess</strong> Implement the Font Dialog in browser using JQuery and Twitter Bootstrap 3</li>
+    <li><strong style="color:yellow;">Done</strong> Implement the Font Dialog in browser using JQuery and Twitter Bootstrap 3</li>
 </ul>
 <p>2-3: tasks</p>
 <ul>
