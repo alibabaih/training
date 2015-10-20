@@ -1,5 +1,6 @@
 // generated on 2015-10-19 using generator-gulp-webapp 1.0.3
 import gulp from 'gulp';
+import mocha from 'gulp-mocha';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
@@ -46,6 +47,19 @@ gulp.task('html', ['styles'], () => {
   const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
   return gulp.src('app/*.html')
+    .pipe(assets)
+    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
+    .pipe(assets.restore())
+    .pipe($.useref())
+    .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('testHtml', ['styles'], () => {
+  const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
+
+  return gulp.src('test/*.html')
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
@@ -142,11 +156,13 @@ gulp.task('serve:test', () => {
 });
 
 //testing
-gulp.task('tests', ()=> {
-  gulp.src('test.js', {read: false}).
+gulp.task('tests', ['lint', 'html', 'images', 'fonts', 'extras'], ()=> {
+  gulp.src('test/spec/test.js', {read: false}).
     // gulp-mocha needs filepaths so you can't have any plugins before it
     pipe(mocha({reporter: 'nyan'}));
 });
+
+
 
 // inject bower components
 gulp.task('wiredep', () => {
@@ -168,6 +184,15 @@ gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
+gulp.task('testing', ['lint', 'testHtml', 'images', 'fonts', 'extras', 'tests'], () => {
+  return gulp.src('testing/**/*');
+});
+
 gulp.task('default', ['clean'], () => {
   gulp.start('build');
+});
+
+
+gulp.task('test', ['clean'], () => {
+  gulp.start('testing');
 });

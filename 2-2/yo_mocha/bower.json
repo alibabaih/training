@@ -1,0 +1,28 @@
+{
+  "name": "yo_mocha",
+  "homepage": "https://github.com/alibabaih/training",
+  "authors": [
+    "alibabaih <alibabaih@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chai": "~3.3.0",
+    "mocha": "~2.3.3"
+  }
+}
