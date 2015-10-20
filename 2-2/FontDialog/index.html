@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser java script</title>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Oswald|Lato|Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <style>
+        del.double {
+            text-decoration: none;
+            position: relative;
+        }
+        del.double:after {
+            content: ' ';
+            font-size: inherit;
+            display: block;
+            position: absolute;
+            right: 0;
+            left: 0;
+            top: 40%;
+            bottom: 40%;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="width: 600px;margin-top: 20px;background-color: #ccc;padding: 10px;">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Font</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Advanced</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="row">
+                <div class="col-md-6">Font:
+                    <input type="text" id="fontInput" class="form-control" placeholder="Text input">
+                    <select id="font" multiple class="form-control">
+                        <option>Tahoma</option>
+                        <option>Lato</option>
+                        <option>Roboto</option>
+                        <option>Oswald</option>
+                    </select>
+                </div>
+                <div class="col-md-3">Font style:
+                    <input type="text" id="styleInput" class="form-control" placeholder="Text input">
+                    <select multiple id="style" class="form-control">
+                        <option>Normal</option>
+                        <option>Italic</option>
+                    </select>
+                </div>
+                <div class="col-md-3">Size:
+                    <input type="text" id="sizeInput" class="form-control" placeholder="Text input">
+                    <select id="size" multiple class="form-control">
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>14</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">Font color:
+                    <select id="color" class="form-control">
+                        <option>Automatic</option>
+                        <option>Red</option>
+                        <option>Green</option>
+                        <option>Blue</option>
+                    </select>
+                </div>
+                <div class="col-md-3">Underline style:
+                    <select id="underline" class="form-control">
+                        <option>None</option>
+                        <option>Solid</option>
+                        <option>Dotted</option>
+                    </select>
+                </div>
+                <div class="col-md-3">Underline color:
+                    <select class="form-control" disabled>
+                        <option>Automatic</option>
+                        <option>Not Automatic</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12"><p>Effects</p></div>
+                <div class="col-md-6">
+
+                    <ul style="list-style: none;">
+                        <li>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="strikethrought" value="option1"> Strikethrought
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="doubleStrikethrough" value="option2"> Double strikethrough
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="superscript" value="option3"> Superscript
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="subscript" value="option3"> Subscript
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul style="list-style: none;">
+                        <li>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="smallCaps" value="option1"> Small caps
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="allCaps" value="option2"> All caps
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="hidden" value="option3"> Hidden
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <p>Preview</p>
+                    <div class="preview" id="preview" style="background-color: white;    padding: 15px;    margin-bottom: 5px;    text-align: center;"><p style="display: inline;">Some text</p></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <button id="default" disabled>Set As Default</button> <button disabled>Text Effects</button>
+                </div>
+                <div class="col-md-6">
+                    <button id="getCSS">Ok</button> <button disabled>Cancel</button>
+                </div>
+            </div>
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">Empty</div>
+      </div>
+
+    </div>
+
+
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script>
+        $('#myTabs a').click(function (e) {
+          e.preventDefault()
+          $(this).tab('show')
+        });
+
+        var font = 1,
+            fontStyle = 1,
+            fontColor = 1,
+            underlineStyle = 1;
+
+        $('#size').on('click', function() {
+            var size = $( "#size option:selected" ).text();
+            var fontSize = size + 'px';
+            $('#sizeInput').val(size);
+            $('.preview').css('font-size', fontSize);
+        });
+
+        $('#style').on('click', function() {
+            var style = $( "#style option:selected" ).text();
+            var fontStyle = style.toLowerCase();
+            $('#styleInput').val(style);
+            $('.preview').css('font-style', fontStyle);
+        });
+
+        $('#font').on('click', function() {
+            var font = $( "#font option:selected" ).text();
+            var fontFont = font;
+            $('#fontInput').val(font);
+            $('.preview').css('font-family', fontFont);
+        });
+
+        $('#color').on('click', function() {
+            var color = $( "#color option:selected" ).text();
+            var fontColor = color.toLowerCase();
+            $('#fontInput').val(color);
+            $('.preview').css('color', fontColor);
+        });
+
+        $('#underline').on('click', function() {
+            var underline = $( "#underline option:selected" ).text();
+            var fontUnderline = underline.toLowerCase();
+            $('#fontInput').val(underline);
+            $('.preview p').css('border-bottom', '1px black ' + fontUnderline);
+        });
+
+        $('#strikethrought').change(function(){
+            if($('#strikethrought').is(':checked')) {
+                $('.preview p').wrap('<del></del>');
+            } else {
+                $('.preview p').unwrap();
+            }
+        });
+
+        $("#doubleStrikethrough").change(function(){
+            if($('#doubleStrikethrough').is(':checked')) {
+                $('.preview p').wrap('<del class="double"></del>');
+            } else {
+                $('.preview p').unwrap();
+            }
+        });
+
+        $("#superscript").change(function(){
+            if($('#superscript').is(':checked')) {
+                alert('one-two-three');
+            }
+        });
+
+        $('#subscript').change(function(){
+            if($('#subscript').is(':checked')) {
+                alert('1-2-3');
+            }
+        });
+
+        $("#smallCaps").change(function(){
+            if($('#smallCaps').is(':checked')) {
+                $('.preview p').css('text-transform', 'lowercase');
+            } else {
+                $('.preview p').css('text-transform', 'inherit');
+            }
+        });
+
+        $("#allCaps").change(function(){
+            if($('#allCaps').is(':checked')) {
+                $('.preview p').css('text-transform', 'uppercase');
+            } else {
+                $('.preview p').css('text-transform', 'inherit');
+            }
+        });
+
+        $("#hidden").change(function(){
+            if($('#hidden').is(':checked')) {
+                $('.preview').hide();
+            } else {
+                $('.preview').show();
+            }
+        });
+
+        $('#getCSS').on('click', function() {
+
+        });
+
+
+        function getTheStyle(){
+            var elem = document.getElementById("preview");
+            var theCSSprop = window.getComputedStyle(elem,null);
+            console.log(theCSSprop);
+            alert('All CSS styles which where applied to the preview element: \n\r' + theCSSprop);
+
+            //document.getElementById("output").innerHTML = theCSSprop;
+        }
+
+        getTheStyle();
+
+        // window.onload = function() {
+        //     if (window.jQuery) {
+        //         alert("Yeah!");
+        //     } else {
+        //         alert("Doesn't Work");
+        //     }
+        // }
+    </script>
+</body>
+</html>
