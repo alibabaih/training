@@ -32,6 +32,7 @@
  * @param obj object to convert
  * @param properties object with keys equal to corresponding keys in the obj and values as "property" variable above
  */
+
 function convert(obj, properties) {
     // TODO Not implemented yet
     for (var i = 0; i < properties.length; i++) {
@@ -50,3 +51,5 @@ function convert(obj, properties) {
     }
 
 }
+
+convert()

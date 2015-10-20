@@ -49,4 +49,10 @@
 <p>2-3: tasks</p>
 <ul>
     <li>Converts passed object</li>
+    <ul>
+        <li>Each enumerable property is converted to getter/setter</li>
+        <li>Added special property _stats which have same keys as converted ones</li>
+        <li>Value of obj._stats[prop] is an object with the following properties</li>
+        <li>Changes to _stats for given property should change the behavior of the property as described</li>
+    </ul>
 </ul>
