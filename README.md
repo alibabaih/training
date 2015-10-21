@@ -48,7 +48,7 @@
 </ul>
 <p>2-3: tasks</p>
 <ul>
-    <li>Converts passed object</li>
+    <li><strong style="color:yellow;">Proccess</strong> Converts passed object</li>
     <ul>
         <li>Each enumerable property is converted to getter/setter</li>
         <li>Added special property _stats which have same keys as converted ones</li>
