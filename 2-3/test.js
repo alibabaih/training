@@ -33,14 +33,29 @@
  * @param properties object with keys equal to corresponding keys in the obj and values as "property" variable above
  */
 
+
+function schonfinkelize(fn) {
+    var slice = Array.prototype.slice,
+        stored_args = slice.call(arguments, 1);
+    return function () {
+        var new_args = slice.call(arguments),
+            args = stored_args.concat(new_args);
+        return fn.apply(null, args);
+    };
+}
+
+schonfinkelize();
+
 function convert(obj, properties) {
     // TODO Not implemented yet
     for (var i = 0; i < properties.length; i++) {
         console.log(properties[i]);
-        var property = properties[i];
+        property: (function() {
+            return property = properties[i];
+        }());
 
         function getProperty() {
-            return property;
+            return this.property;
         }
 
         function setProperty(set) {
