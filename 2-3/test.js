@@ -47,9 +47,49 @@ function convert(obj, properties) {
             this.set = set;
         }
 
-        Object.defineProperty(obj, _stats, descriptor);
+        Object.defineProperty(obj, '_stats', {
+            get: function() {
+                return property;
+            },
+            set: function(property) {
+                this.property = property;
+            },
+            lastRead: function() {
+                return property.lastRead();
+            },
+            lastModified: function () {
+                return property.lastModified();
+            },
+            log: function(val) {
+                if(val === 'true') {
+                    //read write operations
+                    for(var key in obj) {
+                        console.log(obj[key]);
+                    }
+                } else {
+                    return false;
+                }
+            },
+            desc: function (desc) {
+                Object.getOwnPropertyDescriptor(this, desc);
+            },
+            compute: function (val) {
+                var compute = parseInt(val);
+                return compute;
+            }
+        });
     }
 
 }
 
-convert()
+
+magicObject = {
+    bar: 42,
+    own: 54
+};
+var a = Object.getOwnPropertyDescriptor(magicObject, 'bar');
+console.log(a);
+
+magicObject.bar.getProperty();
+magicObject.setProperty('la');
+console.log(magicObject.getOwnPropertyDescriptor());
