@@ -34,32 +34,19 @@
  */
 
 
-function schonfinkelize(fn) {
-    var slice = Array.prototype.slice,
-        stored_args = slice.call(arguments, 1);
-    return function () {
-        var new_args = slice.call(arguments),
-            args = stored_args.concat(new_args);
-        return fn.apply(null, args);
-    };
-}
-
-schonfinkelize();
 
 function convert(obj, properties) {
     // TODO Not implemented yet
     for (var i = 0; i < properties.length; i++) {
         console.log(properties[i]);
-        property: (function() {
-            return property = properties[i];
-        }());
+        var property = properties[i];
 
-        function getProperty() {
-            return this.property;
+        this.getProperty = function() {
+            return property;
         }
 
-        function setProperty(set) {
-            this.set = set;
+        this.setProperty = function(set) {
+            return set;
         }
 
         Object.defineProperty(obj, '_stats', {
