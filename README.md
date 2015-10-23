@@ -15,6 +15,13 @@
         delay, defer, throttle, debounce, once, after, before, wrap, negate, compose. 
         Placed in the folder "under".
     </li>
+    <li>
+        <strong style="color:red;">Done</strong> 
+        Implement the following functions: filter, map, partial, reduce
+    </li>
+    <li>
+        Testing with chai and mocha
+    </li>
 </ul>
 <p>2-1: tasks</p>
 <ul>
