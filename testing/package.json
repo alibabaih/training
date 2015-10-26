@@ -1,15 +1,15 @@
 {
-    "name": "async-testing-tutorial"
-  , "version": "0.0.1"
-  , "description": "A Mocha"
-  , "main": "index"
-  , "engines": { "node": ">= 0.4.x < 0.7.0" }
-  , "scripts": {
-    "test": "mocha -u tdd",
-    "test": "chai"
-
-  }
-  , "devDependencies": {
+  "name": "async-testing-tutorial",
+  "version": "0.0.1",
+  "description": "A Mocha",
+  "main": "index",
+  "engines": {
+    "node": ">= 0.4.x < 0.7.0"
+  },
+  "scripts": {
+    "test": "mocha -u bdd"
+  },
+  "devDependencies": {
     "mocha": "^1.18.2",
     "chai": "3.4.0"
   }
