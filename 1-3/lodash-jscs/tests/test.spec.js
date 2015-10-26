@@ -1,5 +1,6 @@
+var Checker = require()
 //take out in a global scope
-var expect = chai.expect;
+var expect = ('chai').expect;
 var assert = chai.assert;
 
 
