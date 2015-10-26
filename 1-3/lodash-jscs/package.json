@@ -6,6 +6,7 @@
   },
   "private": true,
   "devDependencies": {
-    "requirejs": "2.1.20"
+    "mocha": "^1.18.2",
+    "chai": "3.4.0"
   }
 }

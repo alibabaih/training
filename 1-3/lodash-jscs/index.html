@@ -4,20 +4,20 @@
     <head>
         <meta charset="utf-8">
         <title>Probation Practice</title>
+        <link type="text/css" href="node_modules/mocha/mocha.css">
         <!-- data-main attribute tells require.js to load
              scripts/main.js after require.js loads. -->
-        <script data-main="js/app" src="js/require.js"></script>
     </head>
 
     <body>
     1
         <!-- Results of the tests -->
-        <!--<div id="mocha"></div>-->
-        <!--<script src="index.js"></script>-->
-        <!--<script>-->
-            <!--window.onload = function() {-->
-                <!--mocha.run()-->
-            <!--};-->
-        <!--</script>-->
+        <div id="mocha"></div>
+        <script src="app.js"></script>
+        <script>
+            window.onload = function() {
+                mocha.run();
+            };
+        </script>
     </body>
 </html>
