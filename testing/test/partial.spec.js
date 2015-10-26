@@ -1,7 +1,7 @@
 var expect = require('chai').expect,
     app = {},
-    greet = function(greeting, name) { return greeting + ' ' + name; },
-    sayHelloTo = app.partial(greet, 'hello');
+    greet = function(greeting, name) { return greeting + ' ' + name; };
+    //sayHelloTo = app.partial(greet, 'hello');
 
 describe("Creates a function that invokes func with partial arguments: ", function() {
     it("should return only even integers in array", function() {
